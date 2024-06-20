@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-// Function to delete a single item from a dynamic array without leaving gaps. Assume items to be deleted are chosen at random
-
 contract DeleteFromArray {
 
     uint256[] arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];

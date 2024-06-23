@@ -12,6 +12,18 @@ contract DeleteFromArray {
         arr.pop();
     }
 
+    function deleteRandom() public {
+        uint256 rand = uint256(keccak256(abi.encodePacked(
+            tx.origin,
+            blockhash(block.number - 1),
+            block.timestamp
+        )));
+        for (uint256 i = rand % arr.length; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr.pop();
+    }
+
     function getArray () public view returns (uint256[] memory) {
         return arr;
     }

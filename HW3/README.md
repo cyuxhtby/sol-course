@@ -9,6 +9,6 @@ Smaller data types like uint32 or uint8 still occupy a full 256-bit slot and thi
 
 
 ### What would happen if the implementation of a precompiled contract varied between Ethereum clients? ###
-
+If the implementation of a precompiled contract varied between network clients, it would result in inconsistent state and execution as nodes might disagree on block validity or tx outcomes. The Ethereum Foundation publishes specifications for standardization to prevent such issues. A L2 can also introduce additional precompiles to optimize specific use cases or functionalities unique to its environment.
 
 ### Write a simple contract that uses a memory variable, then using the Remix debugger step through the function and inspect the memory. ###

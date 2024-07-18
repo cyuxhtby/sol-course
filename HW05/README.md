@@ -1,6 +1,5 @@
 # Assembly 1
 
-### 1. Look at this init code. When we do the CODECOPY operation, what are we overwriting? 
 ``` solidity 
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.6;
@@ -44,10 +43,20 @@ KECCAK256 DUP8 0x2B 0x5D 0x4B SWAP16 KECCAK256 EXP REVERT 0xDD 0x5E
 0xD3 0xC4 0x24 0xF6 0xB3 0xB9 SWAP6 0xBF CHAINID PUSH31
 0x212EC4C313F65365AEADF8E964736F6C634300080600330000000000000000 "
 ```
+### 1. Look at the init code above. When we do the CODECOPY operation, what are we overwriting? 
+
+When we do the `CODECOPY` operation we are essentially overwriting the constructor's initialization code with the runtime code. So in this case, the consrtuctor bytcode is discarded and only the function logic remains in the contract storage onchain.
 
 ### 2. Could the answer to Q1 allow an optimisation ? 
 
+Yes, this lets us know that a dense constructor will be costly in deployment while runtime costs will not be affected. This motivates deployers to optimize constructor code as much as possible. Also, since `value1` cannot be updated, it would make sense to make `value1` immutable as this moves `value1`'s data from storage to the bytecode itself, therefore removing the storage write cost of deployment.
+
 ### 3. Can you trigger a revert in the init code in Remix?
+
+Some ways to cause a revert in the constructor's initialization
+- add a revert()
+- add a require() that is not met
+- perform an invalid operation
 
 ### 4. Write some Yul to:
 - Add 0x07 to 0x08
@@ -55,5 +64,10 @@ KECCAK256 DUP8 0x2B 0x5D 0x4B SWAP16 KECCAK256 EXP REVERT 0xDD 0x5E
 - (optional) white this again in opcodes
 
 ### 5. Can you think of a situation where the opcode EXTCODECOPY is used? 
+
+`EXTCODECOPY` is used to copy the bytecode of an external contract into memory. Some use cases could be:
+
+- cloning contracts to emulate calls
+- contract verification
 
 ### 6. Complete the assembly exercises in [this repo](https://github.com/ExtropyIO/ExpertSolidityBootcamp/tree/main/exercises/assembly)

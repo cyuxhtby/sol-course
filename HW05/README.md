@@ -58,10 +58,9 @@ Some ways to cause a revert in the constructor's initialization
 - add a require() that is not met
 - perform an invalid operation
 
-### 4. Write some Yul to:
-### - Add 0x07 to 0x08
-### - Store the result at the next free memory location
-### - (optional) white this again in opcodes
+### 4. Write some Yul to add 0x07 to 0x08 and store the result at the next free memory location. Then write it again in opcodes.
+
+[addition.yul](./addition.yul)
 
 ### 5. Can you think of a situation where the opcode EXTCODECOPY is used? 
 

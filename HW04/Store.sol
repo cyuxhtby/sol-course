@@ -1,6 +1,3 @@
-# Optimizing Storage
-
-```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
@@ -36,10 +33,3 @@ contract Store {
         number++;
     }
 }
-```
-
-### Take this contract and use [this tool](https://github.com/naddison36/sol2uml) to know how many storage slots it is using. By reordering the variables, can you reduce the number of storage slots needed?
-
-First installed the tool with `npm install -g sol2uml`
-
-Then in this folder generated the diagram with `sol2uml class Store.sol -f png -o ./StoreDiagram.png`

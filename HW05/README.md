@@ -59,9 +59,9 @@ Some ways to cause a revert in the constructor's initialization
 - perform an invalid operation
 
 ### 4. Write some Yul to:
-- Add 0x07 to 0x08
-- Store the result at the next free memory location
-- (optional) white this again in opcodes
+### - Add 0x07 to 0x08
+### - Store the result at the next free memory location
+### - (optional) white this again in opcodes
 
 ### 5. Can you think of a situation where the opcode EXTCODECOPY is used? 
 

@@ -1,0 +1,29 @@
+// The main difference between Huff and pure EVM assembly is that Huff automatcally determines the correct PUSH opcodes to use based on values
+// Just define the the values themselves and they will get added to the stack. 
+// Also, Huff provides a macro system for code reuse and abstraction, as well as some compile-time optimizations and error checking.
+
+#define macro MAIN() = {
+    // Push values 7 and 8
+    0x07
+    0x08
+
+    // Pop the two topmost values off the stack, adds them, and pushes the sum back onto the stack
+    ADD
+
+    // Load location of free memory pointer
+    0x40
+    MLOAD
+
+    DUP1    // Duplicate the free memory pointer location
+    MSTORE  // Stores the sum at the memory address pointed to by the free memory pointer
+
+    // Updates the free memory pointer by 32 bytes
+    0x20 
+    ADD
+    0x40
+    MSTORE
+
+    // Return the 32 bytes of data starting from where we stored our sum
+    0x20
+    RETURN
+}

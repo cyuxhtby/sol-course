@@ -60,7 +60,8 @@ Some ways to cause a revert in the constructor's initialization
 
 ### 4. Write some Yul to add 0x07 to 0x08 and store the result at the next free memory location. Then write it again in opcodes.
 
-[addition.yul](./addition.yul)
+[Yul code](./addition.yul)
+[Opcodes](./addition_opcodes.txt)
 
 ### 5. Can you think of a situation where the opcode EXTCODECOPY is used? 
 
@@ -70,3 +71,5 @@ Some ways to cause a revert in the constructor's initialization
 - contract verification
 
 ### 6. Complete the assembly exercises in [this repo](https://github.com/ExtropyIO/ExpertSolidityBootcamp/tree/main/exercises/assembly)
+
+[Exercise solutions](./excercises/)

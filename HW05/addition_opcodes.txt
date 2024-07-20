@@ -1,0 +1,13 @@
+PUSH1 0x07       // Push 7 onto the stack
+PUSH1 0x08       // Push 8 onto the stack
+ADD              // Combines the two topmost stack values into the computed sum
+PUSH1 0x40       // Push the offset of the free memory pointer onto the stack (0x40)
+MLOAD            // Load the value at the memory offset 0x40
+DUP1             // Duplicate the top value on the stack (the sum)
+MSTORE           // Store the sum at the memory offset pointed to by the free memory pointer
+PUSH1 0x20       // Push 32 bytes onto the stack (0x20)
+ADD              // Combines the free memory pointer offset with the new 32 byte offset
+PUSH1 0x40       // Push the new offset of the free memory pointer onto the stack
+MSTORE           // Update the free memory pointer
+PUSH1 0x20       // Push 32 bytes onto the stack, specifies length of the data to return
+RETURN           // Return 32 bytes from memory, starting at the offset where the sum was stored
